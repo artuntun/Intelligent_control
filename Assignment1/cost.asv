@@ -28,7 +28,7 @@ function[error]=cost(Gp,param)
 %   weights to each component of the error function.
 
 % Initialization parameters.
-option=5;
+option=0;
 warning('OFF');
 PHASE=zeros(11,1);
 fr_w=0.2;
@@ -55,15 +55,7 @@ if option == 5
     infos =  stepinfo(M);
     Mp = infos.Overshoot;
     ts = infos.SettlingTime;
-    if param(2)<50 && param(3)<50 && param(1) <50
-        if Mp < 15
-            error = ts*ts;
-        else
-            error = 10000000;
-        end
-    else
-        error = 10000000;
-    end;
+    if param(2) || param (1)<50 || param(0) <50
     
 end
 
